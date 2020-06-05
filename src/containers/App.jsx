@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../assets/styles/App.scss';
 import { Header } from '../components/Header';
 import { Search } from '../components/Search';
@@ -8,6 +8,19 @@ import { CarouselItem } from '../components/CarouselItem';
 import { Footer } from '../components/Footer';
 
 function App() {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const RES = await fetch('http://localhost:3000/initalState');
+      const DATA = await RES.json();
+      console.log(DATA);
+      setVideos(DATA);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="app">
       <Header />

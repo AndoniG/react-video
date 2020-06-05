@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   // Archivo principal del programa
-  entry: './src/index.js',
+  entry: ['@babel/polyfill', './src/index.js'],
   // Dónde se guarda el output del build
   output: {
     path: path.resolve(__dirname, 'dist'),
